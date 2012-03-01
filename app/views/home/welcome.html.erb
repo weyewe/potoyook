@@ -1,0 +1,100 @@
+<div class="hero-unit">
+  
+  
+  <h1>Hello, photographer!</h1>
+  <p>Ingin belajar photography, tetapi males karena ga jelas? Sekarang belajar fotografi bakal jadi jelas banget!<br />
+    Karena kamu dapat memenangkan hadiah menarik setiap minggunya hanya dengan <b>mengumpulkan foto hasil jepretan kamu</b>!  
+    
+    </p>
+  <p><a class="btn btn-primary btn-large">Learn more »</a></p>
+</div>
+
+<!-- Example row of columns -->
+
+
+
+
+<div class="row">
+  <div class="span8">
+    
+    <% (1..10).each do %>
+    <div class="entry_wrapper">
+      <h2  style="margin-bottom:5px; text-align:center;">Heading</h2>
+      <!--        <p>Donec id elit non mi porta gravida at eget metus. Fusce 
+        dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
+        fermentum massa justo sit amet risus. Etiam porta sem malesuada magna 
+        mollis euismod. Donec sed odio dui. </p> -->
+  
+    <div class="image_wrapper" style="text-align:center;">
+    <%= image_tag "thefanie2.jpg", :class =>"thumbnail"%>
+    </div>
+
+      
+      
+      <div class="row" style="margin-top:20px;">
+        <div class="span5" style=" text-align:right;">
+          <h2>Description</h2>
+          <p>
+          I've known both Lewin-Meily for a while now, way before their wedding day. A number of my previous clients are their closest friends too, so they have attended a few weddings of which I was the photographer. Over the last few years I've had many photos of them, some more proper formal shots during the reception, some when they party with lots of shots. So it's only a matter of time for me to hear the good news. Yes, finally it's their turn to get married. 
+          </p>
+          <p><a class="btn" href="#">View details »</a></p>
+        </div>
+        <div class="span3" style="padding-top:10px;"> 
+          
+          <table>
+            <tr>
+              <!-- <td style="padding-left:5px;"><%= image_tag 'propic.jpg', :width => 50 , :class => "thumbnail"%></td> -->
+              <td><%= image_tag 'propic.jpg', :width => 50 , :class => "thumbnail"%></td>
+              <td style="padding-left:10px;">Willy Y. Wirawan</td>
+            </tr>
+          </table>
+         
+          <table cellpadding="0" cellspacing="0" border="0" 
+                class="table table-striped table-bordered" id="example">
+            <tbody>
+         
+                <tr>
+                  <td style="text-align:center;"><button href="#" class="btn btn-success">Like</button></td>
+                  <td style="text-align:center;"><button href="#" class="btn btn-danger">Dislike</button></td>
+                </tr>
+            </tbody>
+          </table>
+          
+          
+        </div>
+      </div>
+    </div>  <!-- .entry_wrapper -->
+    <hr />
+    <% end %>
+    
+    
+    
+    <div class="form-actions" style="text-align:right;">
+      <a class="btn btn-primary" style="width:700px; text-align:center;">Next Page</a>
+      <!-- <button class="btn btn-primary" type="submit">Next Page</button> -->
+    </div>
+              
+    
+  </div>
+  
+  <div class="span4">
+    <div>
+      <h2>Ads ETC</h2>
+      <p>Like us in facebook! </p>
+      <p><a class="btn" href="#">View details »</a></p>
+    </div>
+    
+    <div>
+      <h2>Past Winners</h2>
+      <p>Like us in facebook! </p>
+      <p><a class="btn" href="#">View details »</a></p>
+    </div>
+    
+    <div>
+      <h2>Sponsors</h2>
+      <p>Like us in facebook! </p>
+      <p><a class="btn" href="#">View details »</a></p>
+    </div>
+    
+  </div>
+</div>
