@@ -4,8 +4,29 @@ gem 'rails', '3.1.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
+gem 'devise'
+gem 'transloadit-rails' , ">= 1.0.2"
+gem "daemons"
+gem 'thin'
+gem 'uuidtools'
+gem "airbrake"
+gem "kaminari"  
+gem 'valid_email'
+gem 'acts_as_commentable_with_threading', 
+  :git => 'https://github.com/elight/acts_as_commentable_with_threading.git'
+gem 'awesome_print'
+
+gem "squeel" 
+gem "timeline_fu"
+
+gem 'airbrake'
+gem 'heroku'
+
+gem 'roadie' # for sending email 
+
+gem "delayed_job_active_record", "~> 0.2.1" # delayed_job 
+gem "daemons"
 
 
 # Gems used only for assets and not required
