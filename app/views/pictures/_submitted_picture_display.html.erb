@@ -1,0 +1,35 @@
+
+
+
+<li class="span2">
+  <div class="thumbnail">
+    
+   
+    
+      <%= link_to  "http://google.com",
+       :class => "thumbnail" , :style => "height:160px; overflow:hidden;" do %>
+        <%= image_tag picture.index_image_url %>
+      <% end %>
+
+    
+    
+    <!-- <img alt="" src="http://placehold.it/260x180"> -->
+    <div class="caption">
+      <label class="checkbox">
+        <% checkbox_value = picture.selected_as_cover? %>
+            
+        <%= check_box_tag 'is_checked', get_checkbox_value(checkbox_value )   , 
+            checkbox_value, :class => 'checkbox_tracker', 
+            :id => "provider_#{album.id}-consumer_#{picture.id}" %> Album Cover
+      </label>
+     
+    </div>
+     
+     
+        
+      
+  </div>
+</li>
+
+
+

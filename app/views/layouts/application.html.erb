@@ -36,26 +36,17 @@
     <%= render :partial => "layouts/navigation/main_navigation"%>
     
     <div class="container">
-      
-      
       <%= yield %>
-      
-      
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      
-
       <hr>
 
       <footer>
         <p>© potoyook 2011</p>
       </footer>
-
     </div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-  
-  
     <%= javascript_include_tag "application" %>
+    <%= yield :additional_js %>
 </body></html>

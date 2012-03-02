@@ -1,5 +1,24 @@
 Potoyook::Application.routes.draw do
+  
+  devise_for :users, :controllers => {:registrations => "registrations"}
+
   root :to => 'home#welcome'
+  resources  :projects 
+  resources :albums do 
+    resources :pictures
+  end
+  
+  
+  match 'dashboard' => "home#dashboard", :as => :dashboard 
+  
+  
+=begin
+  To upload images
+=end
+  match 'upload_more_pictures/album/:album_id' => "pictures#upload_more_pictures", :as => :upload_more_pictures, :method => :post
+  match 'select_cover_image/album/:album_id' => "pictures#select_cover_image", :as => :select_cover_image
+  match 'execute_select_cover_album' => "pictures#execute_select_cover", :as => :execute_select_cover, :method => :post
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -6,7 +6,18 @@
     Karena kamu dapat memenangkan hadiah menarik setiap minggunya hanya dengan <b>mengumpulkan foto hasil jepretan kamu</b>!  
     
     </p>
-  <p><a class="btn btn-primary btn-large">Learn more »</a></p>
+  <p>
+    <%= link_to "Select Project »".html_safe, projects_url , :class=>"btn btn-primary btn-large" %>
+    <!--     <a class="btn btn-primary btn-large">Select Project »</a> -->
+    
+    <% if not current_user %>
+      or 
+      
+      <%= link_to "Register »", new_user_session_url , :class => "btn btn-primary btn-large"%>
+    <% end %>
+    <!-- <a class="btn btn-primary btn-large">Register »</a> -->
+  </p> 
+
 </div>
 
 <!-- Example row of columns -->
@@ -16,6 +27,13 @@
 
 <div class="row">
   <div class="span8">
+    <ul class="nav nav-tabs" id="tab">
+      <li class="active"><a data-toggle="tab" href="#home">Hot</a></li>
+      <li><a data-toggle="tab" href="#profile">Trending</a></li>
+      <li><a data-toggle="tab" href="#profile">Vote</a></li>
+    </ul>
+              
+              
     
     <% (1..10).each do %>
     <div class="entry_wrapper">
