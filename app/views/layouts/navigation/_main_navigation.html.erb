@@ -10,7 +10,7 @@
       <div class="nav-collapse">
         <ul class="nav">
           <li class="active">
-            <%= link_to "Latest", root_url %>
+            <%= link_to "Home", root_url %>
           </li>
           
           <% if current_user %>
@@ -18,8 +18,8 @@
             <%= link_to "Dashboard", dashboard_url %>
             </li>
           <% end %>
-          <li><a href="#about">Competitions</a></li>
-          <li><a href="#about">Photographers</a></li>
+          <!-- <li><a href="#about">Create Submission</a></li> -->
+          <!-- <li><a href="#about">Photographers</a></li> -->
           <% if not current_user %>
             <li><a href="#contact">Sign Up / Sign In</a></li>
           <% end %>

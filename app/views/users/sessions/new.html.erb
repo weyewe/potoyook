@@ -3,37 +3,22 @@
 <div class="hero-unit">
     <h2>Sign In </h2>
     <p>
-      Enter your email and password.
+      Enter your email and password. 
     </p>
   
-    <%= form_for(resource, :as => resource_name,  :html=>{:class =>"form-horizontal"}, 
-          :url => session_path(resource_name)) do |f| %>
-        
-        
-          <div class="control-group">
-            <%= f.label :email, "Email" %>
-            <div class="controls">
-              <%= f.email_field :email, :class=>"input-xlarge", :type => "text" %>
-              <p class="help-block">Enter your  email</p>
-            </div>
-          </div>
-        
-          <div class="control-group">
-            <%= f.label :password, "Password" %>
-            <!-- <label for="input01" class="control-label">Text input</label> -->
-            <div class="controls">
-              <%= f.password_field :password, :class=>"input-xlarge" %>
-              <!-- <input type="text" id="input01" class="input-xlarge"> -->
-              <p class="help-block">Enter your password</p>
-            </div>
-          </div>
-        
-
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Sign In</button>
-          </div>
-    <% end %>
-  
+    
+    
+     <%= simple_form_for(resource, :as => resource_name,  :url => session_path(resource_name),
+            :html => {:class => 'form-horizontal' }) do |f| %>
+        <%= f.input :email , :input_html => {:class => "input-xlarge"} , 
+          :hint => "Enter your email"%>
+        <%= f.input :password, :input_html => {:rows => 5, :class => "input-xlarge" }, 
+          :hint => "Enter your password"%>
+        <div class="form-actions">
+          <%= f.button :submit , :class => "btn btn-primary" , :value => "Sign In"%>
+          <%= link_to "Back", root_url, :class => "btn"%>
+        </div>
+      <% end %>
 </div>
 
 

@@ -4,6 +4,7 @@ Potoyook::Application.routes.draw do
 
   root :to => 'home#welcome'
   resources  :projects 
+  resources :users
   resources :albums do 
     resources :pictures
   end
@@ -19,6 +20,12 @@ Potoyook::Application.routes.draw do
   match 'select_cover_image/album/:album_id' => "pictures#select_cover_image", :as => :select_cover_image
   match 'execute_select_cover_album' => "pictures#execute_select_cover", :as => :execute_select_cover, :method => :post
  
+ 
+=begin
+  To view the album's images
+=end
+  match 'see_album_content/:album_id' => "albums#see_album_content", :as => :see_album_content 
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

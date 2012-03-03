@@ -1,73 +1,26 @@
-<div class="hero-unit">
-  
-  
-  <h1>Dashboard</h1>
-  <p>
-    There are several things you can do: 
-    create new public submissions,
-    select project,
-    create submission for project, 
-    or just simply to vote  
-  </p>
-  <p>
-    <%= link_to "Create NEW Submission »", projects_url , :class=>"btn btn-primary btn-large" %>
-    <!--     <a class="btn btn-primary btn-large">Select Project »</a> -->
-    
-    <% if not current_user %>
-      or 
-      
-      <%= link_to "Register »", new_user_session_url , :class => "btn btn-primary btn-large"%>
-    <% end %>
-    <!-- <a class="btn btn-primary btn-large">Register »</a> -->
-  </p> 
-
-</div>
-
+<%= render :partial =>"home/hero_unit_dashboard" %>
 <!-- Example row of columns -->
 
 
 
 
-<div class="row">
+<div class="row" id="playground">
   <div class="span8">
-    <ul class="nav nav-tabs" id="tab">
-      <li class="active"><a data-toggle="tab" href="#home">New Album</a></li>
-      <li><a data-toggle="tab" href="#profile">Project Submission</a></li>
-      <li><a data-toggle="tab" href="#profile">Vote</a></li>
-    </ul>
 
-    <ul class="breadcrumb">
-      <li>
-        <a href="#">Create Submission Particulars</a> <span class="divider">/</span>
-      </li>
-      <li>
-        <a href="#">Upload Images</a> <span class="divider">/</span>
-      </li>
-      <li>
-        <a href="#">Select Cover Image</a> <span class="divider">/</span>
-      </li>
-      
-      
-      <li class="active">
-        <a href="#">Image Details</a>
-      </li>
-    </ul>
     
-  
-    <!-- <div class="entry_wrapper"> -->
+          
+          <!--           
+              <ul class="nav nav-tabs" id="tab">
+                <li class="active"><a data-toggle="tab" href="#home">New Album</a></li>
+                <li><a data-toggle="tab" href="#profile">Project Submission</a></li>
+                <li><a data-toggle="tab" href="#profile">Vote</a></li>
+              </ul>
+              
+              -->
+
+    <%= create_breadcrumb(@breadcrumbs).html_safe %>
     
-      <ul class="thumbnails" id="uploaded_image_container">
-        <% @album.pictures.each do |picture| %>
-          <%= render :partial => "pictures/submitted_picture_display" , :locals => {
-            :picture => picture,
-            :album => @album
-          }%>
-
-
-
-
-        <% end %>
-      </ul>
+     <%= render :partial => "pictures/select_cover_album" %>
       
       
     <!-- </div>  --> <!-- .entry_wrapper -->
@@ -75,66 +28,24 @@
     
     
     
-       <div class=" hidden" id="checkbox_form_wrapper">
-          <%= form_for @album, 
-                :url =>execute_select_cover_url   do |f| %>
-            <%= hidden_field_tag 'membership_provider' , ''  %>
-            <%= hidden_field_tag 'membership_consumer', '' %>
-            <%= hidden_field_tag 'membership_decision', '' %>
-          <% end %>
-        </div>
-        
+    
         
               
     
   </div>
   
   <div class="span4">
-    <div>
-      <h2>Upload More Pictures</h2>
-      <%= form_for Picture.new, :url => album_pictures_url(@album) , 
-                :html => {:class=> "well form-search",
-                  :id => 'upload_picture' }  do |f| %>
-        <%#= hidden_field_tag 'is_original', 
-                ORIGINAL_PICTURE  %>
-        <%= transloadit :potoschool_store_image %>
-        <%= f.file_field :original_image_url, :class => "input-medium search-query transloadit-input" , 
-                  :multiple => "multiple", :style=>"width:200px;" %>
-                  <br />
-                  <br />
-        <button type="submit" class=" hide btn submit-button">Upload</button>
-        <p class="help-inline">You can upload multiple images at once.</p>
-      
-      <% end %>
     
-      <% content_for :additional_js do %>
-        <script type="text/javascript" src="//assets.transloadit.com/js/jquery.transloadit2.js"></script>
-        <script type="text/javascript">
-           // We call .transloadit() after the DOM is initialized:
-           $(document).ready(function() {
-             $('#upload_picture').transloadit({
-               wait : true, 
-               pollTimeout : 15000,
-               processZeroFiles : false,
-               onStart : function(assembly){
-               }
-             });
-           });
-        </script>
-      <% end %>
-    </div>
+    <%= render :partial => "pictures/upload_more", 
+      :locals => {:album => @album,
+                  :source => NOT_FROM_DASHBOARD} %>
     
-    <div>
-      <h2>Past Winners</h2>
-      <p>Like us in facebook! </p>
-      <p><a class="btn" href="#">View details »</a></p>
-    </div>
     
-    <div>
-      <h2>Sponsors</h2>
-      <p>Like us in facebook! </p>
-      <p><a class="btn" href="#">View details »</a></p>
-    </div>
     
+    <%= render :partial => "home/dashboard_side_bar" %>
+    
+   
+    
+  
   </div>
 </div>

@@ -5,6 +5,16 @@ class HomeController < ApplicationController
   end
   
   def dashboard
-    @album = Album.new 
+    
+    @last_project  = Project.last 
+    @album = current_user.album_for_project( @last_project ) 
+    
+    if @album.nil?
+      @album = Album.new
+      add_breadcrumb "Create Submission Details", dashboard_path
+    else
+      add_breadcrumb "Select Cover Album & Upload More Picture for: #{@album.title}", dashboard_path
+    end
+    
   end
 end

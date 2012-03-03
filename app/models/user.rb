@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
+  after_create :feed_standard_roles
+  
   # Models  => Role locking is based on user
   has_many :assignments
   has_many :roles, :through => :assignments
@@ -50,6 +52,18 @@ class User < ActiveRecord::Base
     if result.size == 0 
       Assignment.create :user_id => self.id, :role_id => role_id
     end
+  end
+  
+  
+  def feed_standard_roles
+    self.add_roles( [:uploader, :voter])
+  end
+  
+  def album_for_project( project  )
+    Album.find(:first, :conditions => {
+      :user_id => self.id ,
+      :project_id => project.id
+    })
   end
   
 end

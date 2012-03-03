@@ -11,19 +11,21 @@ judge_role = Role.create :name => "Judge" # determine the winner
 # project creator can create competition etc
 project_creator_role = Role.create :name => "ProjectCreator"
 
+Project.create :title => "First Project"
+
 
 #  External facing role
-standard_uploader = User.create_standard_uploader( 
-          :email => "standard@gmail.com", :password => "willy1234",
-          :password_confirmation => "willy1234"
-)
-
-submission_filter_uploader = User.create_standard_uploader(
-          :email => "submission_filter@gmail.com",
-          :password => "willy1234",
-          :password_confirmation => "willy1234"
-).add_roles([:submission_filter])
-
+# standard_uploader = User.create_standard_uploader( 
+#           :email => "standard@gmail.com", :password => "willy1234",
+#           :password_confirmation => "willy1234"
+# )
+# 
+# submission_filter_uploader = User.create_standard_uploader(
+#           :email => "submission_filter@gmail.com",
+#           :password => "willy1234",
+#           :password_confirmation => "willy1234"
+# ).add_roles([:submission_filter])
+# 
 
 # Internal facing role 
 # later 

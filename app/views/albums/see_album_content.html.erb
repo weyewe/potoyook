@@ -1,0 +1,64 @@
+<%#= render :partial =>"home/hero_unit_dashboard" %>
+
+<!-- Example row of columns -->
+
+
+
+
+<div class="row" id="playground" >
+  <div class="span8">
+    <!-- <ul class="nav nav-tabs" id="tab">
+         <li class="active"><a data-toggle="tab" href="#home">New Album</a></li>
+         <li><a data-toggle="tab" href="#profile">Project Submission</a></li>
+         <li><a data-toggle="tab" href="#profile">Vote</a></li>
+       </ul> -->
+       <h2 style="text-align:center; margin-bottom:50px;s"><%= @album.title %></h2>
+   
+    
+    <%#= create_breadcrumb(@breadcrumbs).html_safe %>
+    
+    <% @pictures.each do |picture| %>
+      <div style="text-align:center;">
+        <%= image_tag picture.display_image_url %>
+      </div>
+    <% end %>
+      
+    <hr />
+  </div>
+  
+  <div class="span4" style="position:fixed; right:40px;">
+    
+    <table>
+      <tr>
+        <!-- <td style="padding-left:5px;"><%= image_tag 'propic.jpg', :width => 50 , :class => "thumbnail"%></td> -->
+        <td><%= image_tag 'propic.jpg', :width => 100 , :class => "thumbnail"%></td>
+        <td style="padding-left:10px;">Willy Y. Wirawan</td>
+      </tr>
+    </table>
+   
+    <table cellpadding="0" cellspacing="0" border="0" 
+          class="table table-striped table-bordered" id="example">
+      <tbody>
+   
+          <tr>
+            <td style="text-align:center;"><button href="#" class="btn btn-success">Like</button></td>
+            <td style="text-align:center;"><button href="#" class="btn btn-danger">Dislike</button></td>
+          </tr>
+      </tbody>
+    </table>
+    
+    
+    <div>
+      <h2>Description</h2>
+      <p>
+        <%= @album.description %>
+      </p>
+      <p><!-- <a class="btn" href="#">View details »</a> --></p>
+    </div>
+    
+    
+    
+    <%#= render :partial => "home/dashboard_side_bar" %>
+    
+  </div>
+</div>

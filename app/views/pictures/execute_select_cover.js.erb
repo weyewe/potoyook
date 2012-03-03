@@ -1,0 +1,26 @@
+$(document).ready(function(){
+  
+  var persisted_id  = "provider_<%=  @album_id %>-consumer_<%=  @picture_id %>" ;
+  
+  
+  
+  
+  <% if @decision == TRUE_CHECK %>
+    // clear all, except the selected shite 
+    $(".checkbox_tracker").each(function(){
+      var $checkbox = $(this);
+      var id = $checkbox.attr("id");
+      console.log("The id is " + id );
+      console.log("The persisted id is" + persisted_id);
+      if($checkbox.attr("id") != persisted_id){
+        $checkbox.attr('checked', false);
+      }
+    });
+    
+  <% elsif @decision == FALSE_CHECK %>
+    $(".checkbox_tracker").each(function(){
+      var $checkbox = $(this);
+      $checkbox.attr('checked', false);
+    });
+  <% end %>
+});

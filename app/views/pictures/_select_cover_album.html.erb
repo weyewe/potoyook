@@ -1,0 +1,33 @@
+ <div class="alert alert-success">
+    <a data-dismiss="alert" class="close">×</a>
+    <strong>Well done!</strong> Your project submission for this competition is done. Now, you can change the cover picture, or add more pictures to the current album!<br/>
+    <b>One more thing</b>, you can add profile picture and details about yourself (such as your facebook link)
+    <%= link_to "here", root_url %>. <br />
+    If you <b>win</b> the competition, we will notify you by email!
+  </div>
+
+<!-- <div class="entry_wrapper"> -->
+
+  <ul class="thumbnails" id="uploaded_image_container">
+    <% @album.pictures.each do |picture| %>
+      <%= render :partial => "pictures/submitted_picture_display" , :locals => {
+        :picture => picture,
+        :album => @album
+      }%>
+
+
+
+
+    <% end %>
+  </ul>
+  
+  
+     <div class=" hidden" id="checkbox_form_wrapper">
+        <%= form_for @album, 
+              :url =>execute_select_cover_url   do |f| %>
+          <%= hidden_field_tag 'membership_provider' , ''  %>
+          <%= hidden_field_tag 'membership_consumer', '' %>
+          <%= hidden_field_tag 'membership_decision', '' %>
+        <% end %>
+      </div>
+  

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302075831) do
+ActiveRecord::Schema.define(:version => 20120303071400) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20120302075831) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cover_picture_id"
+    t.integer  "project_id"
+    t.boolean  "has_submitted_picture", :default => false
   end
 
   create_table "assignments", :force => true do |t|
@@ -43,6 +45,23 @@ ActiveRecord::Schema.define(:version => 20120302075831) do
     t.boolean  "is_deleted",          :default => false
     t.boolean  "is_approved"
     t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "picture_shape"
+    t.integer  "display_order"
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "title"
+    t.text     "front_page_description"
+    t.text     "dashboard_description"
+    t.datetime "deadline"
+    t.boolean  "is_closed",              :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

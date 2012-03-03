@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     dashboard_url  
   end
+  
+  def after_sign_up_path_for(resource)
+    dashboard_url 
+  end
 
   
   def set_breadcrumb_for object, destination_path, opening_words

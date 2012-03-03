@@ -1,0 +1,16 @@
+<div class="entry_wrapper">
+ <%= simple_form_for(@album, :html => {:class => 'form-horizontal' }) do |f| %>
+  <%= f.input :title , :input_html => {:class => "input-xlarge span4"}, 
+          :hint => "Title dari album ini"%>
+  <%= f.input :description, :input_html => {:rows => 5, :class => "input-xlarge span5" },
+          :hint => "Deskripsi? Apakah konsep yang melandasi album ini? Latar belakang?"%>
+  
+  <div class="form-actions">
+    <%= f.button :submit , :class => "btn btn-primary" %>
+   
+  </div>
+          
+            
+  
+  <% end %>
+</div>

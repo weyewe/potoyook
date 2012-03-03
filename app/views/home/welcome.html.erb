@@ -6,10 +6,11 @@
   <p style="text-align:center;">
     Ingin belajar photography, tetapi males karena ga jelas? Sekarang belajar fotografi bakal jadi jelas banget, karena kamu dapat memenangkan hadiah menarik setiap minggunya hanya dengan <b>mengumpulkan foto hasil jepretan kamu</b>!  
   </p>
-  <p style="text-align:center;">
-    Karena kami sangat suka foto-foto yang indah dan bermakna (hint: Axioo), maka hadiah dari lomba perdana ini adalah: <b>tiket A weekend With Friends bersama team inti Axioo!</b>
+  <p style="text-align:center; margin-bottom:20px;">
+    Karena kami sangat suka foto-foto yang indah dan bermakna (hint: Axioo), maka hadiah dari lomba perdana ini adalah: <br /><b style="font-size:24px;">tiket Show and Tell Workshop bersama team inti Axioo!</b>
     
   </p>
+  
   
   <p style="text-align:center;">
 
@@ -18,17 +19,27 @@
     <% end %>
   </p>
   <p style="text-align:center;">
-    <%= link_to "Select Project »".html_safe, projects_url , :class=>"btn btn-primary btn-large" %>
+    Now, what are you waiting for?<br /><br />
+    <%= link_to "Submit Result  »".html_safe, new_user_session_url , :class=>"btn btn-primary btn-large" %>
     <!--     <a class="btn btn-primary btn-large">Select Project »</a> -->
     
     <% if not current_user %>
       or 
       
-      <%= link_to "Register »", new_user_session_url , :class => "btn btn-primary btn-large"%>
+      <%= link_to "Register »", new_user_registration_url  , :class => "btn btn-primary btn-large"%>
     <% end %>
+    
+    
+    <%# if not current_user %>
+      or 
+      
+      <%= link_to "Vote Submissions »", "#playground"  , :class => "btn btn-primary btn-large"%>
+    <%# end %>
     <!-- <a class="btn btn-primary btn-large">Register »</a> -->
-  </p> 
-
+    <br />
+    
+    
+ </p>
 </div>
 
 <!-- Example row of columns -->
@@ -36,26 +47,36 @@
 
 
 
-<div class="row">
+<div class="row" id="playground">
   <div class="span8">
-    <ul class="nav nav-tabs" id="tab">
-      <li class="active"><a data-toggle="tab" href="#home">Hot</a></li>
-      <li><a data-toggle="tab" href="#profile">Trending</a></li>
-      <li><a data-toggle="tab" href="#profile">Vote</a></li>
-    </ul>
+    <h2>Latest submissions:</h2>
+    <hr />
+    <!--     <ul class="nav nav-tabs" id="tab">
+          <li class="active"><a data-toggle="tab" href="#home">Hot</a></li>
+          <li><a data-toggle="tab" href="#profile">Trending</a></li>
+          <li><a data-toggle="tab" href="#profile">Vote</a></li>
+        </ul> -->
               
               
     
-    <% (1..10).each do %>
+    <%# (1..10).each do %>
+    <% Album.all.each do | album | %> 
     <div class="entry_wrapper">
-      <h2  style="margin-bottom:5px; text-align:center;">Heading</h2>
+      <h2  style="margin-bottom:5px; text-align:center;">
+        <%= link_to  album.title, see_album_content_url(album) %>
+      </h2>
       <!--        <p>Donec id elit non mi porta gravida at eget metus. Fusce 
         dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut 
         fermentum massa justo sit amet risus. Etiam porta sem malesuada magna 
         mollis euismod. Donec sed odio dui. </p> -->
   
     <div class="image_wrapper" style="text-align:center;">
-    <%= image_tag "thefanie2.jpg", :class =>"thumbnail"%>
+      <!-- display_image_url -->
+      
+      <%= link_to see_album_content_url(album) , do  %>
+          <%= image_tag album.cover_picture.display_image_url, :class =>"thumbnail", 
+            :style => "margin: 0 auto;"%>
+      <% end %>
     </div>
 
       
@@ -64,9 +85,12 @@
         <div class="span5" style=" text-align:right;">
           <h2>Description</h2>
           <p>
-          I've known both Lewin-Meily for a while now, way before their wedding day. A number of my previous clients are their closest friends too, so they have attended a few weddings of which I was the photographer. Over the last few years I've had many photos of them, some more proper formal shots during the reception, some when they party with lots of shots. So it's only a matter of time for me to hear the good news. Yes, finally it's their turn to get married. 
+          <%= album.description %>
           </p>
-          <p><a class="btn" href="#">View details »</a></p>
+          <p>
+            <%= link_to  "View details »", see_album_content_url(album), :class => "btn" %>
+            <!-- <a class="btn" href="#">View details »</a> -->
+            </p>
         </div>
         <div class="span3" style="padding-top:10px;"> 
           
@@ -94,6 +118,7 @@
       </div>
     </div>  <!-- .entry_wrapper -->
     <hr />
+    <%# end %>
     <% end %>
     
     
@@ -107,23 +132,7 @@
   </div>
   
   <div class="span4">
-    <div>
-      <h2>Ads ETC</h2>
-      <p>Like us in facebook! </p>
-      <p><a class="btn" href="#">View details »</a></p>
-    </div>
-    
-    <div>
-      <h2>Past Winners</h2>
-      <p>Like us in facebook! </p>
-      <p><a class="btn" href="#">View details »</a></p>
-    </div>
-    
-    <div>
-      <h2>Sponsors</h2>
-      <p>Like us in facebook! </p>
-      <p><a class="btn" href="#">View details »</a></p>
-    </div>
+     <%= render :partial => "home/dashboard_side_bar" %>
     
   </div>
 </div>

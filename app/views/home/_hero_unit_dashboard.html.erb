@@ -1,0 +1,28 @@
+<div class="hero-unit">
+  
+  
+  <h1>Welcome!</h1>
+  <p>
+    Ayo, menangkan kompetisi merebutkan tiket <b>Show and Tell!</b> bersama team ini Axioo! 
+  </p>
+  
+  <p>
+    Caranya adalah dengan meng-upload album wedding atau pre-wedding andalan kamu. Yang kualitasnya bisa
+    menyamai atau bahkan melebihi axioo, akan memenangkan tiket tersebut!
+  </p>
+  
+  <%# if not user.has_submission_for(project) %>
+  <p>
+    <%= link_to "Create NEW Submission »", "#playground" , :class=>"btn btn-primary btn-large" %>
+    <!--     <a class="btn btn-primary btn-large">Select Project »</a> -->
+    
+    <% if not current_user %>
+      or 
+      
+      <%= link_to "Register »", new_user_session_url , :class => "btn btn-primary btn-large"%>
+    <% end %>
+    <!-- <a class="btn btn-primary btn-large">Register »</a> -->
+  </p>  
+  <%# end %>
+
+</div>

@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<!-- <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -16,3 +16,34 @@
 <% end %>
 
 <%= render "links" %>
+ -->
+
+
+
+
+
+
+<div class="hero-unit">
+    <h2>Registration</h2>
+    <p>By registering, you can vote other people's submission, you can create your own submissions as well!
+      <br />
+      For this to happen, we  need your <b>Email</b> and <b>Password</b>.</p>
+    <!-- <p>
+      Enter your email and password.
+    </p> -->
+  
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name),
+          :html => {:class => 'form-horizontal' }) do |f| %>
+      <%= f.input :email , :input_html => {:class => "input-xlarge"} , 
+        :hint => "Enter your email"%>
+      <%= f.input :password, :input_html => {:rows => 5, :class => "input-xlarge" }, 
+        :hint => "Enter your password"%>
+      <%= f.input :password_confirmation, :input_html => {:rows => 5, :class => "input-xlarge" },
+        :hint => "Enter your password confirmation"%>
+      <div class="form-actions">
+        <%= f.button :submit , :class => "btn btn-primary", :value => "Register" %>
+        <%= link_to "Back", root_url, :class => "btn"%>
+      </div>
+    <% end %>
+</div>
+
